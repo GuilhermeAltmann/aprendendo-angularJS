@@ -28,6 +28,13 @@
                 {name: 'Joana', phone: "992133212"}
             ];
 
+            $scope.companies = [
+                {name: "Vodafone", id: 14},
+                {name: "T-Mobile", id: 32},
+                {name: "Comcast", id: 96},
+                {name: "Cox", id: 96},
+                {name: "AT&T", id: 70}
+            ];
             $scope.addContact = function (contact) {
 
                 $scope.contacts.push(angular.copy(contact));
@@ -43,10 +50,12 @@
             <tr>
                 <th>Name</th>
                 <th>Phone</th>
+                <th>Company</th>
             </tr>
             <tr ng-repeat="contact in contacts">
                 <td>{{contact.name}}</td>
                 <td>{{contact.phone}}</td>
+                <td>{{contact.company.name}}</td>
             </tr>
         </table>
         <hr/>
@@ -58,7 +67,12 @@
             Phone
             <input class="form-control" type="text" ng-model="contact.phone"/>
         </label>
-        <button class="btn btn-primary btn-block" ng-click="addContact(contact)">Add Contact</button>
+        <label>
+            <select class="form-control" ng-model="contact.company" ng-options="company.name for company in companies">
+                <option value="">Select one option...</option>
+            </select>
+        </label>
+        <button class="btn btn-primary btn-block" ng-click="addContact(contact)" ng-disabled="!contact.name || !contact.phone">Add Contact</button>
     </div>
 </body>
 </html>
