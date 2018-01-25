@@ -86,19 +86,21 @@
             </tr>
         </table>
         <hr/>
-        <label>
-            Name
-            <input class="form-control" type="text" ng-model="contact.name"/>
-        </label>
-        <label>
-            Phone
-            <input class="form-control" type="text" ng-model="contact.phone"/>
-        </label>
-        <label>
-            <select class="form-control" ng-model="contact.company" ng-options="company.name for company in companies">
-                <option value="">Select one option...</option>
-            </select>
-        </label>
+        <form name="contactForm">
+            <label>
+                Name
+                <input class="form-control" type="text" ng-model="contact.name" ng-required="true"/>
+            </label>
+            <label>
+                Phone
+                <input class="form-control" type="text" ng-model="contact.phone"/>
+            </label>
+            <label>
+                <select class="form-control" ng-model="contact.company" ng-options="company.name for company in companies">
+                    <option value="">Select one option...</option>
+                </select>
+            </label>
+        </form>
         <button class="btn btn-primary btn-block" ng-click="addContact(contact)" ng-disabled="!contact.name || !contact.phone">Add Contact</button>
         <button class="btn btn-danger btn-block" ng-click="deleteContacts(contacts)" ng-show="isContactSelected(contacts)">Delete Contacts</button>
     </div>
